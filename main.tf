@@ -38,3 +38,9 @@ resource "grafana_folder" "MySQL" {
 
   title = "MySQL"
 }
+
+resource "grafana_folder" "Kafka" {
+  provider = grafana.cloud
+
+  title = "Kafka"
+}

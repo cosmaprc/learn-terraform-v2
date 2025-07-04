@@ -37,3 +37,11 @@ resource "grafana_dashboard" "mysql" {
   config_json = file("${path.module}/dashboards/mysql/${each.key}")
   folder      = grafana_folder.MySQL.id
 }
+
+resource "grafana_dashboard" "kafka" {
+  provider = grafana.cloud
+
+  for_each    = fileset("${path.module}/dashboards/kafka", "*.json")
+  config_json = file("${path.module}/dashboards/kafka/${each.key}")
+  folder      = grafana_folder.Kafka.id
+}
