@@ -44,3 +44,9 @@ resource "grafana_folder" "Kafka" {
 
   title = "Kafka"
 }
+
+resource "grafana_folder" "Tomcat" {
+  provider = grafana.cloud
+
+  title = "Tomcat"
+}
