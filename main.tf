@@ -32,3 +32,9 @@ resource "grafana_folder" "Couchbase" {
 
   title = "Couchbase"
 }
+
+resource "grafana_folder" "MySQL" {
+  provider = grafana.cloud
+
+  title = "MySQL"
+}

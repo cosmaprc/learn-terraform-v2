@@ -29,3 +29,11 @@ resource "grafana_dashboard" "couchbase" {
   config_json = file("${path.module}/dashboards/couchbase/${each.key}")
   folder      = grafana_folder.Couchbase.id
 }
+
+resource "grafana_dashboard" "mysql" {
+  provider = grafana.cloud
+
+  for_each    = fileset("${path.module}/dashboards/mysql", "*.json")
+  config_json = file("${path.module}/dashboards/mysql/${each.key}")
+  folder      = grafana_folder.MySQL.id
+}
