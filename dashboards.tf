@@ -45,3 +45,11 @@ resource "grafana_dashboard" "kafka" {
   config_json = file("${path.module}/dashboards/kafka/${each.key}")
   folder      = grafana_folder.Kafka.id
 }
+
+resource "grafana_dashboard" "tomcat" {
+  provider = grafana.cloud
+
+  for_each    = fileset("${path.module}/dashboards/tomcat", "*.json")
+  config_json = file("${path.module}/dashboards/tomcat/${each.key}")
+  folder      = grafana_folder.Tomcat.id
+}
